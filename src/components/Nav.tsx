@@ -4,20 +4,7 @@ import styled from "styled-components";
 function Nav() {
   return (
     <Navigation>
-      <A href="#">
-        Mark
-        <TeamsList>
-          <li>
-            <a href="#">shlucky shrimps</a>
-          </li>
-          <li>
-            <a href="#">shlucky shrimps</a>
-          </li>
-          <li>
-            <a href="#">shlucky shrimps</a>
-          </li>
-        </TeamsList>
-      </A>
+      <A href="#">Mark</A>
       <A href="#">Results</A>
     </Navigation>
   );
@@ -32,7 +19,7 @@ const Navigation = styled.nav`
 `;
 
 const A = styled.a`
-  position: relative;
+  // position: relative;
   width: 50%;
   text-align: center;
   padding: 1.5rem;
@@ -41,30 +28,6 @@ const A = styled.a`
   &:hover {
     background: #fff;
     color: #fd865d;
-    ul {
-      display: block;
-    }
-  }
-`;
-
-const TeamsList = styled.ul`
-  display: none;
-  position: absolute;
-  width: 100%;
-  list-style: none;
-  text-align: left;
-  background: #fd865d;
-  left: 0;
-  padding-inline-start: 0;
-  margin-block-start: 0.5em; // is this an absolute mess??
-  > li a {
-    text-decoration: none;
-    color: #24352e;
-    font-size: 2rem;
-    padding: 1rem;
-    &:hover {
-      color: #fff;
-    }
   }
 `;
 

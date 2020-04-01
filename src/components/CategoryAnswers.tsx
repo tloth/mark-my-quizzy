@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 function CategoryAnswers(props: any) {
-  const [currentCategoryScore, setCurrentCategoryScore] = useState<number>(0);
+  const [categoryScore, setCategoryScore] = useState<number>(0);
 
   function toggleButton(e: any) {
     if (e.target.innerHTML === "nope") {
       e.target.innerHTML = "correct!";
-      setCurrentCategoryScore(currentCategoryScore + 1);
+      setCategoryScore(categoryScore + 1);
       props.setScore(props.score + 1);
     } else if (e.target.innerHTML === "correct!") {
       e.target.innerHTML = "nope";
-      setCurrentCategoryScore(currentCategoryScore - 1);
+      setCategoryScore(categoryScore - 1);
       props.setScore(props.score - 1);
     }
   }
@@ -39,7 +39,7 @@ function CategoryAnswers(props: any) {
         <Answer>1 these will also come from airtable</Answer>
         <MarkerButton onClick={toggleButton}>nope</MarkerButton>
       </AnswerContainer>
-      <p>Current score: {currentCategoryScore}</p>
+      <p>Category score: {categoryScore}/10</p>
     </Container>
   );
 }
