@@ -2,15 +2,15 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: "Spartan", sans-serif;
+  font-family: 'Spartan', sans-serif;
   text-transform: uppercase;
   color: #24352e;
-  background-image: url("background-flowers.png");
+  background-image: url('background-flowers.png');
   background-size: cover;
   background-attachment: fixed;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }

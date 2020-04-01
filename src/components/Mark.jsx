@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState } from 'react'
+import styled from 'styled-components'
 
-import CategoryAnswers from "./CategoryAnswers";
+import CategoryAnswers from './CategoryAnswers'
 
 function Mark() {
-  const [score, setScore] = useState(0);
+  const [score, setScore] = useState(0)
   return (
     <>
       <UL>
         <li>
-          It's time to mark! Find your team name on the list below and{" "}
+          It's time to mark! Find your team name on the list below and{' '}
           <em>pick the team right after yours</em> by clicking on it. This is
           very important in order to make sure every form gets marked! Please
           don't fuk this up. The last team should pick the first one on the
@@ -29,13 +29,13 @@ function Mark() {
         Teams
         <TeamsList>
           <li>
-            <a href="#">shlucky shrimps</a>
+            <a href='#'>shlucky shrimps</a>
           </li>
           <li>
-            <a href="#">blablablaaaaa</a>
+            <a href='#'>blablablaaaaa</a>
           </li>
           <li>
-            <a href="#">shrimps</a>
+            <a href='#'>shrimps</a>
           </li>
         </TeamsList>
       </Dropdown>
@@ -43,7 +43,7 @@ function Mark() {
       <CategoryAnswers score={score} setScore={setScore} />
       <h1>current overall score: {score}/60</h1>
     </>
-  );
+  )
 }
 
 const UL = styled.ul`
@@ -56,7 +56,7 @@ const UL = styled.ul`
   > li {
     margin-bottom: 2rem;
   }
-`;
+`
 
 const Dropdown = styled.div`
   position: relative;
@@ -74,7 +74,7 @@ const Dropdown = styled.div`
       display: block;
     }
   }
-`;
+`
 
 const TeamsList = styled.ul`
   display: none;
@@ -94,5 +94,5 @@ const TeamsList = styled.ul`
       color: #fff;
     }
   }
-`;
-export default Mark;
+`
+export default Mark

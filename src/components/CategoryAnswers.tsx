@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState } from 'react'
+import styled from 'styled-components'
 
 function CategoryAnswers(props: any) {
-  const [categoryScore, setCategoryScore] = useState<number>(0);
+  const [categoryScore, setCategoryScore] = useState<number>(0)
 
   function toggleButton(e: any) {
-    if (e.target.innerHTML === "nope") {
-      e.target.innerHTML = "correct!";
-      setCategoryScore(categoryScore + 1);
-      props.setScore(props.score + 1);
-    } else if (e.target.innerHTML === "correct!") {
-      e.target.innerHTML = "nope";
-      setCategoryScore(categoryScore - 1);
-      props.setScore(props.score - 1);
+    if (e.target.innerHTML === 'nope') {
+      e.target.innerHTML = 'correct!'
+      setCategoryScore(categoryScore + 1)
+      props.setScore(props.score + 1)
+    } else if (e.target.innerHTML === 'correct!') {
+      e.target.innerHTML = 'nope'
+      setCategoryScore(categoryScore - 1)
+      props.setScore(props.score - 1)
     }
   }
 
@@ -41,7 +41,7 @@ function CategoryAnswers(props: any) {
       </AnswerContainer>
       <p>Category score: {categoryScore}/10</p>
     </Container>
-  );
+  )
 }
 
 const Container = styled.section`
@@ -49,11 +49,11 @@ const Container = styled.section`
   background: #fff;
   padding: 1rem;
   margin: 3rem auto 3rem;
-`;
+`
 
 const Category = styled.h2`
   text-align: center;
-`;
+`
 
 const AnswerContainer = styled.div`
   display: flex;
@@ -62,9 +62,9 @@ const AnswerContainer = styled.div`
   border: 0.5px dotted #fd865d;
   padding: 0 0.5rem;
   margin-bottom: 0.5rem;
-`;
+`
 
-const Answer = styled.p``;
+const Answer = styled.p``
 
 const MarkerButton = styled.button`
   border: none;
@@ -73,6 +73,6 @@ const MarkerButton = styled.button`
   text-transform: uppercase;
   padding: 0.5rem;
   vertical-align: middle;
-`;
+`
 
-export default CategoryAnswers;
+export default CategoryAnswers
