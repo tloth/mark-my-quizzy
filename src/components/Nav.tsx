@@ -1,26 +1,28 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
+import { Link } from '@reach/router'
 
 function Nav() {
   return (
     <Navigation>
-      <A href="#">
+      <A to='/'>Home</A>
+      <A to='/mark'>
         Mark
         <TeamsList>
           <li>
-            <a href="#">shlucky shrimps</a>
+            <a href='#'>shlucky shrimps</a>
           </li>
           <li>
-            <a href="#">shlucky shrimps</a>
+            <a href='#'>shlucky shrimps</a>
           </li>
           <li>
-            <a href="#">shlucky shrimps</a>
+            <a href='#'>shlucky shrimps</a>
           </li>
         </TeamsList>
       </A>
-      <A href="#">Results</A>
+      <A to='/results'>Results</A>
     </Navigation>
-  );
+  )
 }
 
 const Navigation = styled.nav`
@@ -29,9 +31,9 @@ const Navigation = styled.nav`
   color: #fff;
   text-transform: uppercase;
   font-size: 3rem;
-`;
+`
 
-const A = styled.a`
+const A = styled(Link)`
   position: relative;
   width: 50%;
   text-align: center;
@@ -45,7 +47,7 @@ const A = styled.a`
       display: block;
     }
   }
-`;
+`
 
 const TeamsList = styled.ul`
   display: none;
@@ -66,6 +68,6 @@ const TeamsList = styled.ul`
       color: #fff;
     }
   }
-`;
+`
 
-export default Nav;
+export default Nav

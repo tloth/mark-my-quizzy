@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react'
+import styled from 'styled-components'
 
 function Welcome() {
   return (
@@ -15,7 +15,7 @@ function Welcome() {
         </li>
         <li>
           When every team has submitted their answers, you will be asked to find
-          your team name on the list and{" "}
+          your team name on the list and{' '}
           <em>pick the team right after yours</em> by clicking on it. This is
           very important in order to make sure every form gets marked! Please
           don't fuk this up. The last team should pick the first one on the
@@ -33,21 +33,21 @@ function Welcome() {
         <li>Good luck and don't fuck it up!</li>
       </UL>
     </Container>
-  );
+  )
 }
 
 const Container = styled.div`
   text-align: center;
   width: 50%;
   margin: 5rem auto 3rem;
-`;
+`
 
 const H1 = styled.h1`
-  font-family: "Rock Salt", cursive;
+  font-family: 'Rock Salt', cursive;
   font-size: 3rem;
   color: #fff;
   letter-spacing: 0.2rem;
-`;
+`
 
 const UL = styled.ul`
   text-transform: none;
@@ -57,6 +57,6 @@ const UL = styled.ul`
   > li {
     margin-bottom: 2rem;
   }
-`;
+`
 
-export default Welcome;
+export default Welcome
