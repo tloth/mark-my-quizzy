@@ -8,11 +8,11 @@ function CategoryAnswers(props: any) {
     if (e.target.innerHTML === 'nope') {
       e.target.innerHTML = 'correct!'
       setCategoryScore(categoryScore + 1)
-      props.setScore(props.score + 1)
+      props.setTotalScore(props.totalScore + 1)
     } else if (e.target.innerHTML === 'correct!') {
       e.target.innerHTML = 'nope'
       setCategoryScore(categoryScore - 1)
-      props.setScore(props.score - 1)
+      props.setTotalScore(props.totalScore - 1)
     }
   }
 
@@ -48,7 +48,7 @@ const Container = styled.section`
   width: 50vw;
   background: #fff;
   padding: 1rem;
-  margin: 3rem auto 3rem;
+  margin: 3rem auto;
 `
 
 const Category = styled.h2`

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import CategoryAnswers from './CategoryAnswers'
 
 function Mark() {
-  const [score, setScore] = useState(0)
+  const [totalScore, setTotalScore] = useState(0)
   return (
     <>
       <UL>
@@ -39,9 +39,9 @@ function Mark() {
           </li>
         </TeamsList>
       </Dropdown>
-      <CategoryAnswers score={score} setScore={setScore} />
-      <CategoryAnswers score={score} setScore={setScore} />
-      <h1>current overall score: {score}/60</h1>
+      <CategoryAnswers totalScore={totalScore} setTotalScore={setTotalScore} />
+      <CategoryAnswers totalScore={totalScore} setTotalScore={setTotalScore} />
+      <h1>current overall totalScore: {totalScore}/60</h1>
     </>
   )
 }
