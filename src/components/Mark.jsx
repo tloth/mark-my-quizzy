@@ -1,0 +1,98 @@
+import React, { useState } from 'react'
+import styled from 'styled-components'
+
+import CategoryAnswers from './CategoryAnswers'
+
+function Mark() {
+  const [totalScore, setTotalScore] = useState(0)
+  return (
+    <>
+      <UL>
+        <li>
+          It's time to mark! Find your team name on the list below and{' '}
+          <em>pick the team right after yours</em> by clicking on it. This is
+          very important in order to make sure every form gets marked! Please
+          don't fuk this up. The last team should pick the first one on the
+          list.
+        </li>
+        <li>
+          We go through every answer together, you toggle the button to mark an
+          answer correct (or incorrect again). Use your best judgement, but be
+          kind & generous (not too generous).
+        </li>
+        <li>
+          When you submit the page you marked, that team's points should appear
+          on the leader board, which you can find by clicking on 'Results'.
+        </li>
+      </UL>
+      <Dropdown>
+        Teams
+        <TeamsList>
+          <li>
+            <a href='#'>shlucky shrimps</a>
+          </li>
+          <li>
+            <a href='#'>blablablaaaaa</a>
+          </li>
+          <li>
+            <a href='#'>shrimps</a>
+          </li>
+        </TeamsList>
+      </Dropdown>
+      <CategoryAnswers totalScore={totalScore} setTotalScore={setTotalScore} />
+      <CategoryAnswers totalScore={totalScore} setTotalScore={setTotalScore} />
+      <h1>current overall totalScore: {totalScore}/60</h1>
+    </>
+  )
+}
+
+const UL = styled.ul`
+  width: 50%;
+  text-transform: none;
+  text-align: left;
+  line-height: 1.4rem;
+  letter-spacing: 0.1rem;
+  margin: 5rem auto 3rem;
+  > li {
+    margin-bottom: 2rem;
+  }
+`
+
+const Dropdown = styled.div`
+  position: relative;
+  width: 50%;
+  text-align: center;
+  padding: 1.5rem;
+  margin: 03rem auto;
+  text-decoration: none;
+  background: #fff;
+  color: #fd865d;
+  &:hover {
+    background: #fd865d;
+    color: #fff;
+    ul {
+      display: block;
+    }
+  }
+`
+
+const TeamsList = styled.ul`
+  display: none;
+  position: absolute;
+  width: 100%;
+  list-style: none;
+  background: #fd865d;
+  left: 0;
+  padding-inline-start: 0;
+  margin-block-start: 0.5em; // is this an absolute mess??
+  > li a {
+    text-decoration: none;
+    color: #24352e;
+    font-size: 2rem;
+    padding: 1rem;
+    &:hover {
+      color: #fff;
+    }
+  }
+`
+export default Mark

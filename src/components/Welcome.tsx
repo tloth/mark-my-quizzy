@@ -10,25 +10,11 @@ function Welcome() {
       <UL>
         <li>
           Put your answers on the provided Airtable form. When you submit it,
-          your team name shall appear in the dropdown menu when you click
-          'Mark'.
+          your team name shall appear in the dropdown menu on the 'Mark' page.
         </li>
         <li>
-          When every team has submitted their answers, you will be asked to find
-          your team name on the list and{' '}
-          <em>pick the team right after yours</em> by clicking on it. This is
-          very important in order to make sure every form gets marked! Please
-          don't fuk this up. The last team should pick the first one on the
-          list.
-        </li>
-        <li>
-          We go through every answer together, you tick correct or incorrect for
-          each one. Use your best judgement, but be kind & generous (not too
-          generous).
-        </li>
-        <li>
-          When you submit the page you marked, that team's points should appear
-          on the leader board, which you can find by clicking on 'Results'.
+          When every team has submitted their answers, you will be asked to
+          navigate to the 'Mark' page!
         </li>
         <li>Good luck and don't fuck it up!</li>
       </UL>

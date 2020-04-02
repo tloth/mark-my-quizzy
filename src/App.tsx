@@ -2,7 +2,7 @@ import React from 'react'
 import { Router, RouteComponentProps } from '@reach/router'
 import Nav from './components/Nav'
 import Welcome from './components/Welcome'
-import Marking from './components/Marking'
+import Mark from './components/Mark.jsx'
 import Results from './components/Results'
 
 function App() {
@@ -10,9 +10,9 @@ function App() {
     <>
       <Nav />
       <Router>
-        <RouterPage path="/" pageComponent={<Welcome />} />
-        <RouterPage path="/mark" pageComponent={<Marking />} />
-        <RouterPage path="/results" pageComponent={<Results />} />
+        <RouterPage path='/' pageComponent={<Welcome />} />
+        <RouterPage path='/mark' pageComponent={<Mark />} />
+        <RouterPage path='/results' pageComponent={<Results />} />
       </Router>
     </>
   )
