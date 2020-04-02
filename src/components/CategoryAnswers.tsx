@@ -5,12 +5,12 @@ function CategoryAnswers(props: any) {
   const [categoryScore, setCategoryScore] = useState<number>(0)
 
   function toggleButton(e: any) {
-    if (e.target.innerHTML === 'nope') {
-      e.target.innerHTML = 'correct!'
+    if (e.target.textContent === 'nope') {
+      e.target.textContent = 'correct!'
       setCategoryScore(categoryScore + 1)
       props.setTotalScore(props.totalScore + 1)
-    } else if (e.target.innerHTML === 'correct!') {
-      e.target.innerHTML = 'nope'
+    } else if (e.target.textContent === 'correct!') {
+      e.target.textContent = 'nope'
       setCategoryScore(categoryScore - 1)
       props.setTotalScore(props.totalScore - 1)
     }
