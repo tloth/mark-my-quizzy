@@ -1,49 +1,74 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
-import CategoryAnswers from './CategoryAnswers'
+import TeamAnswers from './TeamAnswers';
 
-function Mark() {
-  const [totalScore, setTotalScore] = useState(0)
-  return (
-    <>
-      <UL>
-        <li>
-          It's time to mark! Find your team name on the list below and{' '}
-          <em>pick the team right after yours</em> by clicking on it. This is
-          very important in order to make sure every form gets marked! Please
-          don't fuk this up. The last team should pick the first one on the
-          list.
-        </li>
-        <li>
-          We go through every answer together, you toggle the button to mark an
-          answer correct (or incorrect again). Use your best judgement, but be
-          kind & generous (not too generous).
-        </li>
-        <li>
-          When you submit the page you marked, that team's points should appear
-          on the leader board, which you can find by clicking on 'Results'.
-        </li>
-      </UL>
-      <Dropdown>
-        Teams
-        <TeamsList>
+function Mark({ answersArray }) {
+  const [selectedTeam, setSelectedTeam] = useState(null);
+
+  let teamAnswers = [];
+  if (answersArray) {
+    answersArray.filter(answerObject => {
+      if (answerObject.fields.teamname === selectedTeam) {
+        teamAnswers.push(answerObject.fields);
+        return;
+      }
+    });
+  }
+
+  if (answersArray) {
+    return (
+      <>
+        <UL>
           <li>
-            <a href='#'>shlucky shrimps</a>
+            It's time to mark! Find your team name on the list below and{' '}
+            <em>pick the team right after yours</em> by clicking on it. This is
+            very important in order to make sure every form gets marked! Please
+            don't fuk this up. The last team should pick the first one on the
+            list.
           </li>
           <li>
-            <a href='#'>blablablaaaaa</a>
+            We go through every answer together, you toggle the button to mark
+            an answer correct (or incorrect again). Use your best judgement, but
+            be kind & generous (not too generous).
           </li>
           <li>
-            <a href='#'>shrimps</a>
+            When you submit the page you marked, that team's points should
+            appear on the leader board, which you can find by clicking on
+            'Results'.
           </li>
-        </TeamsList>
-      </Dropdown>
-      <CategoryAnswers totalScore={totalScore} setTotalScore={setTotalScore} />
-      <CategoryAnswers totalScore={totalScore} setTotalScore={setTotalScore} />
-      <h1>current overall totalScore: {totalScore}/60</h1>
-    </>
-  )
+        </UL>
+        {!selectedTeam ? (
+          <Dropdown>
+            Teams
+            <TeamsList>
+              {answersArray.map(answerObject => {
+                return (
+                  <li>
+                    <a
+                      href='#'
+                      onClick={() =>
+                        setSelectedTeam(answerObject.fields.teamname)
+                      }>
+                      {answerObject.fields.teamname}
+                    </a>
+                  </li>
+                );
+              })}
+            </TeamsList>
+          </Dropdown>
+        ) : null}
+
+        {selectedTeam ? (
+          <TeamAnswers teamAnswers={teamAnswers} selectedTeam={selectedTeam} />
+        ) : (
+          <p>Select a team from the dropdown list "Teams" above!</p>
+        )}
+      </>
+    );
+  } else {
+    return <p>waiting for some data in mark</p>;
+  }
 }
 
 const UL = styled.ul`
@@ -56,7 +81,7 @@ const UL = styled.ul`
   > li {
     margin-bottom: 2rem;
   }
-`
+`;
 
 const Dropdown = styled.div`
   position: relative;
@@ -74,7 +99,7 @@ const Dropdown = styled.div`
       display: block;
     }
   }
-`
+`;
 
 const TeamsList = styled.ul`
   display: none;
@@ -94,5 +119,5 @@ const TeamsList = styled.ul`
       color: #fff;
     }
   }
-`
-export default Mark
+`;
+export default Mark;
