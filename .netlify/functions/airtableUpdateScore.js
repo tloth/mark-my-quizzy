@@ -2,11 +2,9 @@ const { config } = require('dotenv');
 config();
 const Airtable = require('airtable');
 
-var base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
+const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
   'appvXxiTEwZwrbroU'
 );
-
-const recordId = 'recanP6EYqyiX2K8D'; //passed in somehow
 
 exports.handler = function(event, context, callback) {
   const body = JSON.parse(event.body);

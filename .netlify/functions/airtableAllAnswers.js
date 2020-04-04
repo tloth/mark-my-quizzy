@@ -2,12 +2,9 @@ const { config } = require('dotenv');
 config();
 const Airtable = require('airtable');
 
-Airtable.configure({
-  endpointUrl: process.env.AIRTABLE_API_URL,
-  apiKey: process.env.AIRTABLE_API_KEY,
-});
-
-const base = Airtable.base('appvXxiTEwZwrbroU');
+const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
+  'appvXxiTEwZwrbroU'
+);
 
 exports.handler = function(event, context, callback) {
   const allAnswers = [];

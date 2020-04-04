@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import CategoryAnswers from './CategoryAnswers';
-import { redirectTo } from '@reach/router';
+import { navigate } from '@reach/router';
 
 function TeamAnswers({ teamData }) {
   const [totalScore, setTotalScore] = useState(0);
@@ -22,7 +22,7 @@ function TeamAnswers({ teamData }) {
   let category5Answers = {};
   let category6Answers = {};
   for (const property in teamAnswers) {
-    if (property !== 'teamname') {
+    if (property !== 'teamname' && property !== 'score') {
       switch (property.split('_')[0]) {
         case 'geography':
           category1Answers[property] = teamAnswers[property];
@@ -43,7 +43,10 @@ function TeamAnswers({ teamData }) {
           category6Answers[property] = teamAnswers[property];
           break;
         default:
-          console.log("Something ain't right in the switch case! TeamAnswers");
+          console.log(
+            "Something ain't right in the switch case! TeamAnswers",
+            property
+          );
       }
     }
   }
@@ -58,9 +61,8 @@ function TeamAnswers({ teamData }) {
     }).then(response => {
       if (response.ok) {
         alert('Score submitted! Onto the results page!');
-        redirectTo('/results');
-      }
-      return alert('error sending score', response);
+        navigate('/results');
+      } else return alert('error sending score', response);
     });
   }
 
