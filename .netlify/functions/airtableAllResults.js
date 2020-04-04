@@ -2,20 +2,26 @@ const { config } = require('dotenv');
 config();
 const Airtable = require('airtable');
 
-const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
-  'appvXxiTEwZwrbroU'
-);
+Airtable.configure({
+  endpointUrl: process.env.AIRTABLE_API_URL,
+  apiKey: process.env.AIRTABLE_API_KEY,
+});
+
+const base = Airtable.base('appvXxiTEwZwrbroU');
 
 exports.handler = function(event, context, callback) {
-  const allAnswers = [];
+  const allScores = [];
+
   base('Spring quiz answers')
     .select({
       view: 'Grid view',
+      fields: ['teamname', 'score'],
+      sort: [{ field: 'score', direction: 'desc' }],
     })
     .eachPage(
       function page(records, fetchNextPage) {
         records.forEach(function(record) {
-          allAnswers.push(record);
+          allScores.push(record);
         });
         fetchNextPage();
       },
@@ -26,7 +32,7 @@ exports.handler = function(event, context, callback) {
         }
         callback(null, {
           statusCode: 200,
-          body: JSON.stringify(allAnswers),
+          body: JSON.stringify(allScores),
         });
       }
     );
