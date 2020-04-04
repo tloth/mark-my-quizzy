@@ -1,35 +1,46 @@
 import React, { useState } from 'react';
 
 import CategoryAnswers from './CategoryAnswers';
+import { redirectTo } from '@reach/router';
 
-function TeamAnswers({ teamAnswers }) {
+function TeamAnswers({ teamData }) {
   const [totalScore, setTotalScore] = useState(0);
+  const teamAnswers = teamData.fields;
+  const teamId = teamData.id;
+
+  /* Potential solution to filling out all form issue:
+ Instead of mapping through all the properties in teamAnswers, maybe map from 1-10. And switch based on number from:
+ property.split('_')[1].
+ Set default value of 'Not answered' for the undefined
+ Just brainstorming
+*/
+
   let category1Answers = {};
   let category2Answers = {};
   let category3Answers = {};
   let category4Answers = {};
   let category5Answers = {};
   let category6Answers = {};
-  for (const property in teamAnswers[0]) {
+  for (const property in teamAnswers) {
     if (property !== 'teamname') {
       switch (property.split('_')[0]) {
         case 'geography':
-          category1Answers[property] = teamAnswers[0][property];
+          category1Answers[property] = teamAnswers[property];
           break;
         case 'music':
-          category2Answers[property] = teamAnswers[0][property];
+          category2Answers[property] = teamAnswers[property];
           break;
         case 'film':
-          category3Answers[property] = teamAnswers[0][property];
+          category3Answers[property] = teamAnswers[property];
           break;
         case 'books':
-          category4Answers[property] = teamAnswers[0][property];
+          category4Answers[property] = teamAnswers[property];
           break;
         case 'news':
-          category5Answers[property] = teamAnswers[0][property];
+          category5Answers[property] = teamAnswers[property];
           break;
         case 'pictures':
-          category6Answers[property] = teamAnswers[0][property];
+          category6Answers[property] = teamAnswers[property];
           break;
         default:
           console.log("Something ain't right in the switch case! TeamAnswers");
@@ -37,14 +48,20 @@ function TeamAnswers({ teamAnswers }) {
     }
   }
 
-  function updateTeamScore(teamScore, recordId) {
+  function updateTeamScore(teamScore, teamId) {
     fetch('/.netlify/functions/airtableUpdateScore', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ teamScore, recordId: 'recanP6EYqyiX2K8D' }),
-    }).then(data => console.log({ data }));
+      body: JSON.stringify({ teamScore, teamId }),
+    }).then(response => {
+      if (response.ok) {
+        alert('Score submitted! Onto the results page!');
+        redirectTo('/results');
+      }
+      return alert('error sending score', response);
+    });
   }
 
   if (
@@ -94,7 +111,7 @@ function TeamAnswers({ teamAnswers }) {
           category={'pictures'}
         />
         <p>current overall totalScore: {totalScore}/60</p>
-        <button onClick={() => updateTeamScore(totalScore)}>
+        <button onClick={() => updateTeamScore(totalScore, teamId)}>
           Submit final score!
         </button>
       </>

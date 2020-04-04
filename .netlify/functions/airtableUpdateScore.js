@@ -7,10 +7,10 @@ var base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
 );
 
 const recordId = 'recanP6EYqyiX2K8D'; //passed in somehow
-// const score = 45; //passed in somehow
 
 exports.handler = function(event, context, callback) {
   const body = JSON.parse(event.body);
+  const recordId = body.teamId;
   base('Spring quiz answers').update(
     recordId,
     {

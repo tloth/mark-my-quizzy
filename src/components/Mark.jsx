@@ -6,14 +6,11 @@ import TeamAnswers from './TeamAnswers';
 function Mark({ answersArray }) {
   const [selectedTeam, setSelectedTeam] = useState(null);
 
-  let teamAnswers = [];
+  let teamData = [];
   if (answersArray) {
-    answersArray.filter(answerObject => {
-      if (answerObject.fields.teamname === selectedTeam) {
-        teamAnswers.push(answerObject.fields);
-        return;
-      }
-    });
+    teamData = answersArray.filter(answerObject => {
+      return answerObject.fields.teamname === selectedTeam;
+    })[0];
   }
 
   if (answersArray) {
@@ -60,7 +57,7 @@ function Mark({ answersArray }) {
         ) : null}
 
         {selectedTeam ? (
-          <TeamAnswers teamAnswers={teamAnswers} selectedTeam={selectedTeam} />
+          <TeamAnswers teamData={teamData} selectedTeam={selectedTeam} />
         ) : (
           <p>Select a team from the dropdown list "Teams" above!</p>
         )}
