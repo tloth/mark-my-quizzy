@@ -5,7 +5,6 @@ import Nav from './components/Nav';
 import Welcome from './components/Welcome';
 import Mark from './components/Mark.jsx';
 import Results from './components/Results';
-// import sampleAnswers from './components/sampleAnswersParsed';
 
 function App() {
   const [answersArray, setAnswersArray] = useState(null);
@@ -16,12 +15,6 @@ function App() {
       .then(json => setAnswersArray(json))
       .catch(err => console.log('ERROR IN FETCH', err));
   }, []);
-
-  // useEffect(() => {
-  //   setAnswersArray(sampleAnswers);
-  // }, []);
-
-  console.log('ANSWERS', answersArray);
 
   return (
     <>
