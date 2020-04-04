@@ -1,47 +1,58 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
-function CategoryAnswers(props: any) {
-  const [categoryScore, setCategoryScore] = useState<number>(0)
+function CategoryAnswers({
+  totalScore,
+  setTotalScore,
+  answers,
+  category,
+}: any) {
+  const [categoryScore, setCategoryScore] = useState<number>(0);
 
   function toggleButton(e: any) {
     if (e.target.textContent === 'nope') {
-      e.target.textContent = 'correct!'
-      setCategoryScore(categoryScore + 1)
-      props.setTotalScore(props.totalScore + 1)
+      e.target.textContent = 'correct!';
+      setCategoryScore(categoryScore + 1);
+      setTotalScore(totalScore + 1);
     } else if (e.target.textContent === 'correct!') {
-      e.target.textContent = 'nope'
-      setCategoryScore(categoryScore - 1)
-      props.setTotalScore(props.totalScore - 1)
+      e.target.textContent = 'nope';
+      setCategoryScore(categoryScore - 1);
+      setTotalScore(totalScore - 1);
     }
   }
 
-  return (
-    <Container>
-      <Category>Category: will be filled</Category>
-      <AnswerContainer>
-        <Answer>1 these will also come from airtable</Answer>
-        <MarkerButton onClick={toggleButton}>nope</MarkerButton>
-      </AnswerContainer>
-      <AnswerContainer>
-        <Answer>1 these will also come from airtable</Answer>
-        <MarkerButton onClick={toggleButton}>nope</MarkerButton>
-      </AnswerContainer>
-      <AnswerContainer>
-        <Answer>1 these will also come from airtable</Answer>
-        <MarkerButton onClick={toggleButton}>nope</MarkerButton>
-      </AnswerContainer>
-      <AnswerContainer>
-        <Answer>1 these will also come from airtable</Answer>
-        <MarkerButton onClick={toggleButton}>nope</MarkerButton>
-      </AnswerContainer>
-      <AnswerContainer>
-        <Answer>1 these will also come from airtable</Answer>
-        <MarkerButton onClick={toggleButton}>nope</MarkerButton>
-      </AnswerContainer>
-      <p>Category score: {categoryScore}/10</p>
-    </Container>
-  )
+  let sortedAnswersArray: Array<string> = [];
+  sortedAnswersArray.push(
+    answers[category + '_1'],
+    answers[category + '_2'],
+    answers[category + '_3'],
+    answers[category + '_4'],
+    answers[category + '_5'],
+    answers[category + '_6'],
+    answers[category + '_7'],
+    answers[category + '_8'],
+    answers[category + '_9'],
+    answers[category + '_10']
+  );
+
+  if (sortedAnswersArray.length === 10) {
+    return (
+      <Container>
+        <Category>Category: {category}</Category>
+        {sortedAnswersArray.map((answer, index) => {
+          return (
+            <AnswerContainer>
+              <p>
+                {index + 1}: {answer}
+              </p>
+              <MarkerButton onClick={toggleButton}>nope</MarkerButton>
+            </AnswerContainer>
+          );
+        })}
+        <p>Category score: {categoryScore}/10</p>
+      </Container>
+    );
+  }
 }
 
 const Container = styled.section`
@@ -49,11 +60,11 @@ const Container = styled.section`
   background: #fff;
   padding: 1rem;
   margin: 3rem auto;
-`
+`;
 
 const Category = styled.h2`
   text-align: center;
-`
+`;
 
 const AnswerContainer = styled.div`
   display: flex;
@@ -62,9 +73,7 @@ const AnswerContainer = styled.div`
   border: 0.5px dotted #fd865d;
   padding: 0 0.5rem;
   margin-bottom: 0.5rem;
-`
-
-const Answer = styled.p``
+`;
 
 const MarkerButton = styled.button`
   border: none;
@@ -73,6 +82,6 @@ const MarkerButton = styled.button`
   text-transform: uppercase;
   padding: 0.5rem;
   vertical-align: middle;
-`
+`;
 
-export default CategoryAnswers
+export default CategoryAnswers;
