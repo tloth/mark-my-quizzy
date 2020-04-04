@@ -76,6 +76,7 @@ function TeamAnswers({ teamData }) {
   ) {
     return (
       <>
+        <H1>{`team: ${teamAnswers.teamname}`}</H1>
         <CategoryAnswers
           totalScore={totalScore}
           setTotalScore={setTotalScore}
@@ -139,6 +140,14 @@ function TeamAnswers({ teamData }) {
 }
 
 export default TeamAnswers;
+
+const H1 = styled.h1`
+  width: 50vw;
+  background: rgb(255, 255, 255);
+  padding: 1rem;
+  margin: 3rem auto;
+  text-align: center;
+`;
 
 const ScoreWrapper = styled.div`
   width: 50vw;
