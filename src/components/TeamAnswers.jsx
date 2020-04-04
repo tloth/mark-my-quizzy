@@ -44,9 +44,7 @@ function TeamAnswers({ teamAnswers }) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ teamScore, recordId: 'recanP6EYqyiX2K8D' }),
-    })
-      .then(result => result.text())
-      .then(data => console.log({ data }));
+    }).then(data => console.log({ data }));
   }
 
   if (

@@ -7,13 +7,14 @@ var base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
 );
 
 const recordId = 'recanP6EYqyiX2K8D'; //passed in somehow
-const score = 45; //passed in somehow
+// const score = 45; //passed in somehow
 
 exports.handler = function(event, context, callback) {
+  const body = JSON.parse(event.body);
   base('Spring quiz answers').update(
     recordId,
     {
-      score,
+      score: body.teamScore,
     },
     function(err, record) {
       if (err) {
@@ -23,8 +24,6 @@ exports.handler = function(event, context, callback) {
 
       callback(null, {
         body: JSON.stringify(
-          'The handler event was: ',
-          event,
           'Score updated in Airtable to: ',
           record.get('score')
         ),
