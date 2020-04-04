@@ -44,6 +44,7 @@ function Mark({ answersArray }) {
                   <li>
                     <a
                       href='#'
+                      g
                       onClick={() =>
                         setSelectedTeam(answerObject.fields.teamname)
                       }>

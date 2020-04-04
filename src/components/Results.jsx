@@ -7,13 +7,8 @@ export default function Results() {
   useEffect(() => {
     fetch('/.netlify/functions/airtableAllResults')
       .then(response => response.json())
-      .then(data => {
-        console.log({ data });
-        setResults(data);
-      });
+      .then(data => setResults(data));
   }, []);
-
-  console.log({ results });
 
   if (!results) return <p>waiting for results</p>;
 
