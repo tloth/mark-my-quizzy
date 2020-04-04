@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-
-import CategoryAnswers from './CategoryAnswers';
 import { navigate } from '@reach/router';
+import styled from 'styled-components';
+import CategoryAnswers from './CategoryAnswers';
 
 function TeamAnswers({ teamData }) {
   const [totalScore, setTotalScore] = useState(0);
@@ -112,20 +112,46 @@ function TeamAnswers({ teamData }) {
           answers={category6Answers}
           category={'pictures'}
         />
-        <p>current overall totalScore: {totalScore}/60</p>
-        <button onClick={() => updateTeamScore(totalScore, teamId)}>
-          Submit final score!
-        </button>
+        <ScoreWrapper>
+          <p>current overall totalScore: {totalScore}/60</p>
+          <Button onClick={() => updateTeamScore(totalScore, teamId)}>
+            Submit final score!
+          </Button>
+        </ScoreWrapper>
       </>
     );
   } else {
     return (
-      <p>
-        Waiting for answers... If you see this for more than a few seconds,
-        there were answers missing! You had one job.
-      </p>
+      <>
+        <p>
+          Waiting for answers... If you see this for more than a few seconds,
+          there were answers missing! You had one job.
+        </p>
+        <ScoreWrapper>
+          <p>current overall totalScore: {totalScore}/60</p>
+          <Button onClick={() => updateTeamScore(totalScore, teamId)}>
+            Submit final score!
+          </Button>
+        </ScoreWrapper>
+      </>
     );
   }
 }
 
 export default TeamAnswers;
+
+const ScoreWrapper = styled.div`
+  width: 50vw;
+  margin: 0 auto;
+  text-align: center;
+`;
+
+const Button = styled.button`
+  width: 50%;
+  background: #fff;
+  padding: 1rem;
+  margin: 2rem auto;
+  font-size: 20px;
+  font-family: 'Spartan', sans-serif;
+  text-transform: uppercase;
+`;
