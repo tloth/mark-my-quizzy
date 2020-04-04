@@ -17,10 +17,18 @@ exports.handler = function(event, context, callback) {
     },
     function(err, record) {
       if (err) {
-        console.error('Error in updateScore handler: ', err);
+        callback('Error in updateScore handler: ', err);
         return;
       }
-      console.log('Score updated in Airtable to: ', record.get('score'));
+
+      callback(null, {
+        body: JSON.stringify(
+          'The handler event was: ',
+          event,
+          'Score updated in Airtable to: ',
+          record.get('score')
+        ),
+      });
     }
   );
 };

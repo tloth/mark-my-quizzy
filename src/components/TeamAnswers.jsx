@@ -37,6 +37,18 @@ function TeamAnswers({ teamAnswers }) {
     }
   }
 
+  function updateTeamScore(teamScore, recordId) {
+    fetch('/.netlify/functions/airtableUpdateScore', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ teamScore, recordId: 'recanP6EYqyiX2K8D' }),
+    })
+      .then(result => result.text())
+      .then(data => console.log({ data }));
+  }
+
   if (
     Object.keys(category1Answers).length === 10 &&
     Object.keys(category2Answers).length === 10 &&
@@ -84,6 +96,9 @@ function TeamAnswers({ teamAnswers }) {
           category={'pictures'}
         />
         <p>current overall totalScore: {totalScore}/60</p>
+        <button onClick={() => updateTeamScore(totalScore)}>
+          Submit final score!
+        </button>
       </>
     );
   } else {
