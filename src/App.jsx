@@ -11,10 +11,12 @@ function App() {
 
   useEffect(() => {
     fetch('/.netlify/functions/airtableAllAnswers')
-      .then(result => result.json())
-      .then(json => setAnswersArray(json))
-      .catch(err => console.log('ERROR IN FETCH', err));
+      .then((result) => result.json())
+      .then((json) => setAnswersArray(json))
+      .catch((err) => console.log('ERROR IN FETCH', err));
   }, []);
+
+  console.log('answersArray is', answersArray);
 
   return (
     <>

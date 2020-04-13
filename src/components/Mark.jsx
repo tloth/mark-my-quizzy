@@ -8,12 +8,13 @@ function Mark({ answersArray }) {
 
   let teamData = [];
   if (answersArray) {
-    teamData = answersArray.filter(answerObject => {
+    teamData = answersArray.filter((answerObject) => {
       return answerObject.fields.teamname === selectedTeam;
     })[0];
   }
 
   if (answersArray) {
+    console.log('ANSWERSARRAY: ', answersArray);
     return (
       <>
         <UL>
@@ -39,7 +40,7 @@ function Mark({ answersArray }) {
           <Dropdown>
             Teams
             <TeamsList>
-              {answersArray.map(answerObject => {
+              {answersArray.map((answerObject) => {
                 return (
                   <li>
                     <a
@@ -54,12 +55,8 @@ function Mark({ answersArray }) {
               })}
             </TeamsList>
           </Dropdown>
-        ) : null}
-
-        {selectedTeam ? (
-          <TeamAnswers teamData={teamData} selectedTeam={selectedTeam} />
         ) : (
-          <p>Select a team from the dropdown list "Teams" above!</p>
+          <TeamAnswers teamData={teamData} selectedTeam={selectedTeam} />
         )}
       </>
     );
