@@ -13,7 +13,9 @@ function App() {
     fetch('/.netlify/functions/airtableAllAnswers')
       .then((result) => result.json())
       .then((json) => {
+        console.log('in the dot then json');
         const fields = json.map((teamData) => {
+          console.log('in the map and teamdata is ', teamData);
           return teamData.fields;
         });
         setAnswersArray(fields);
