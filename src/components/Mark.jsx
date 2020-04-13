@@ -6,15 +6,14 @@ import TeamAnswers from './TeamAnswers';
 function Mark({ answersArray }) {
   const [selectedTeam, setSelectedTeam] = useState(null);
 
-  let teamData = [];
+  let teamData = {};
   if (answersArray) {
     teamData = answersArray.filter((answerObject) => {
-      return answerObject.fields.teamname === selectedTeam;
+      return answerObject.teamname === selectedTeam;
     })[0];
   }
 
   if (answersArray) {
-    console.log('ANSWERSARRAY: ', answersArray);
     return (
       <>
         <UL>
@@ -45,10 +44,8 @@ function Mark({ answersArray }) {
                   <li>
                     <a
                       href='#'
-                      onClick={() =>
-                        setSelectedTeam(answerObject.fields.teamname)
-                      }>
-                      {answerObject.fields.teamname}
+                      onClick={() => setSelectedTeam(answerObject.teamname)}>
+                      {answerObject.teamname}
                     </a>
                   </li>
                 );

@@ -5,7 +5,7 @@ import CategoryAnswers from './CategoryAnswers';
 
 function TeamAnswers({ teamData }) {
   const [totalScore, setTotalScore] = useState(0);
-  const teamAnswers = teamData.fields;
+  const teamAnswers = teamData;
   const teamId = teamData.id;
 
   /* Potential solution to filling out all form issue:
