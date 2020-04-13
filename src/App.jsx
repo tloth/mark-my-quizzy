@@ -12,7 +12,12 @@ function App() {
   useEffect(() => {
     fetch('/.netlify/functions/airtableAllAnswers')
       .then((result) => result.json())
-      .then((json) => setAnswersArray(json))
+      .then((json) => {
+        const fields = json.map((teamData) => {
+          return teamData.fields;
+        });
+        setAnswersArray(fields);
+      })
       .catch((err) => console.log('ERROR IN FETCH', err));
   }, []);
 
