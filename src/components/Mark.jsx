@@ -8,8 +8,8 @@ function Mark({ answersArray }) {
 
   let teamData = [];
   if (answersArray) {
-    teamData = answersArray.filter(answerObject => {
-      return answerObject.fields.teamname === selectedTeam;
+    teamData = answersArray.filter((answerObject) => {
+      return answerObject.teamname === selectedTeam;
     })[0];
   }
 
@@ -39,15 +39,13 @@ function Mark({ answersArray }) {
           <Dropdown>
             Teams
             <TeamsList>
-              {answersArray.map(answerObject => {
+              {answersArray.map((answerObject) => {
                 return (
                   <li>
                     <a
                       href='#'
-                      onClick={() =>
-                        setSelectedTeam(answerObject.fields.teamname)
-                      }>
-                      {answerObject.fields.teamname}
+                      onClick={() => setSelectedTeam(answerObject.teamname)}>
+                      {answerObject.teamname}
                     </a>
                   </li>
                 );
