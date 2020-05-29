@@ -23,22 +23,22 @@ function TeamAnswers({ teamData }) {
   for (const property in teamData) {
     if (property !== 'teamname' && property !== 'score') {
       switch (property.split('_')[0]) {
-        case 'geography':
+        case 'a':
           category1Answers[property] = teamData[property];
           break;
-        case 'music':
+        case 'b':
           category2Answers[property] = teamData[property];
           break;
-        case 'film':
+        case 'c':
           category3Answers[property] = teamData[property];
           break;
-        case 'books':
+        case 'd':
           category4Answers[property] = teamData[property];
           break;
-        case 'news':
+        case 'e':
           category5Answers[property] = teamData[property];
           break;
-        case 'pictures':
+        case 'f':
           category6Answers[property] = teamData[property];
           break;
         default:
@@ -80,37 +80,37 @@ function TeamAnswers({ teamData }) {
           totalScore={totalScore}
           setTotalScore={setTotalScore}
           answers={category1Answers}
-          category={'geography'}
+          category={'a'}
         />
         <CategoryAnswers
           totalScore={totalScore}
           setTotalScore={setTotalScore}
           answers={category2Answers}
-          category={'music'}
+          category={'b'}
         />
         <CategoryAnswers
           totalScore={totalScore}
           setTotalScore={setTotalScore}
           answers={category3Answers}
-          category={'film'}
+          category={'c'}
         />
         <CategoryAnswers
           totalScore={totalScore}
           setTotalScore={setTotalScore}
           answers={category4Answers}
-          category={'books'}
+          category={'d'}
         />
         <CategoryAnswers
           totalScore={totalScore}
           setTotalScore={setTotalScore}
           answers={category5Answers}
-          category={'news'}
+          category={'e'}
         />
         <CategoryAnswers
           totalScore={totalScore}
           setTotalScore={setTotalScore}
           answers={category6Answers}
-          category={'pictures'}
+          category={'f'}
         />
         <ScoreWrapper>
           <p>current overall totalScore: {totalScore}/60</p>
