@@ -5,7 +5,6 @@ import CategoryAnswers from './CategoryAnswers';
 
 function TeamAnswers({ teamData }) {
   const [totalScore, setTotalScore] = useState(0);
-  const teamAnswers = teamData.fields;
   const teamId = teamData.id;
 
   /* Potential solution to filling out all form issue:
@@ -21,30 +20,30 @@ function TeamAnswers({ teamData }) {
   let category4Answers = {};
   let category5Answers = {};
   let category6Answers = {};
-  for (const property in teamAnswers) {
+  for (const property in teamData) {
     if (property !== 'teamname' && property !== 'score') {
       switch (property.split('_')[0]) {
         case 'geography':
-          category1Answers[property] = teamAnswers[property];
+          category1Answers[property] = teamData[property];
           break;
         case 'music':
-          category2Answers[property] = teamAnswers[property];
+          category2Answers[property] = teamData[property];
           break;
         case 'film':
-          category3Answers[property] = teamAnswers[property];
+          category3Answers[property] = teamData[property];
           break;
         case 'books':
-          category4Answers[property] = teamAnswers[property];
+          category4Answers[property] = teamData[property];
           break;
         case 'news':
-          category5Answers[property] = teamAnswers[property];
+          category5Answers[property] = teamData[property];
           break;
         case 'pictures':
-          category6Answers[property] = teamAnswers[property];
+          category6Answers[property] = teamData[property];
           break;
         default:
           console.log(
-            "Something ain't right in the switch case! TeamAnswers",
+            "Something ain't right in the switch case! TeamData",
             property
           );
       }
@@ -58,7 +57,7 @@ function TeamAnswers({ teamData }) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ teamScore, teamId }),
-    }).then(response => {
+    }).then((response) => {
       if (response.ok) {
         alert('Score submitted! Onto the results page!');
         navigate('/results');
@@ -76,7 +75,7 @@ function TeamAnswers({ teamData }) {
   ) {
     return (
       <>
-        <H1>{`team: ${teamAnswers.teamname}`}</H1>
+        <H1>{`team: ${teamData.teamname}`}</H1>
         <CategoryAnswers
           totalScore={totalScore}
           setTotalScore={setTotalScore}
