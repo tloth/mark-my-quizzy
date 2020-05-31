@@ -15,6 +15,8 @@
     "@types/styled-components": "^5.0.1",
     "airtable": "^0.8.1",
     "dotenv": "^8.2.0",
+    "http-proxy-middleware": "^1.0.4",
+    "netlify-lambda": "^1.6.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
@@ -25,7 +27,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lambda": "netlify-lambda serve .netlify/functions"
   },
   "eslintConfig": {
     "extends": "react-app"
