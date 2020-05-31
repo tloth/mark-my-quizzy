@@ -1,44 +1,65 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Mark My Quizzy
 
-## Available Scripts
+> Made with tender loving care by [Anna :fish:](https://github.com/tloth) and [Joko :sunflower:](https://github.com/jokosanyang)
 
-In the project directory, you can run:
+## :sunny: Overview
 
-### `yarn start`
+The world is in a... state. We need something to keep us entertained and cheerful until we can leave our homes and gather with our friends in close groups again. And what better way than hosting a remote spring-themed quiz for all of our friends and loved ones?
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Usually, our quizzes have a crucial pen and paper and swap-with-the-team-next-to-you element to them. Alas, not this time.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Luckily though, we are not only **quiz queens** and **marathon quaranteeners**, but also **delightful devs**, so we decided to **create** an app to provide an interactive peer marking experience for our quizees.
 
-### `yarn test`
+The goal was to make it **reusable**, **easy to use** and **beautiful**.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+To see for yourself what we ended up with, visit the site on: https://jaquizzy.netlify.app/
 
-### `yarn build`
+## :rose: How to use
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### The database
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+This app connects to an Airtable database. You can access the required template [here](https://airtable.com/shryctthF9P2RLxbM) by clicking **Copy base** in the top right hand corner. Once copied into your own workspace, you can edit the fields of the quiz submission form and add in your own question names/categories.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The [Airtable docs](https://support.airtable.com/hc/en-us/sections/360003922433) are really helpful when it comes to understanding the interface.
 
-### `yarn eject`
+### Running the project
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+git clone https://github.com/tloth/mark-my-quizzy.git
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Add your `AIRTABLE_API_KEY` to a `.env` file.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+yarn install
+yarn start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+That's it! It's ready to view on http://localhost:3000 with `netlify-lambda` proxying the Netlify Functions requests to http://localhost:9000
 
-## Learn More
+## :baby_chick: The plan
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The idea was simple. Three pages:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- A welcome page with a form.
+- A marking page with another team's prefilled answers.
+- A results page with live scores.
+
+| Rough designs                        |                                      |
+| ------------------------------------ | ------------------------------------ |
+| ![](https://i.imgur.com/qKWw8YD.jpg) | ![](https://i.imgur.com/BCjN4sy.jpg) |
+
+With a week to go, we got to work.
+
+## :hibiscus: Finished result
+
+![Screenshot from the website](https://i.imgur.com/Z3VNrlL.jpg)
+
+## :tulip: Technologies used
+
+- React
+- Typescript
+- Airtable
+- @reach/router
+- Netlify functions
+- styled components
