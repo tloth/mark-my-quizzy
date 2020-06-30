@@ -1,5 +1,6 @@
 import groupWith from 'ramda/src/groupWith';
 import quizConfig from '../quizConfig';
+import mergeAll from 'ramda/src/mergeAll';
 
 export const dataFormatter = (data) => {
   const { categoryLength, numberOfCategories } = quizConfig;
@@ -73,7 +74,7 @@ export const dataFormatter = (data) => {
       teamname,
       id,
       score,
-      answers: answersByCategory,
+      answers: mergeAll(answersByCategory),
     };
   });
 };

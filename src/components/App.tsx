@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Router, RouteComponentProps } from '@reach/router';
 
-import Nav from './components/Nav';
-import Welcome from './components/Welcome';
-import Mark from './components/Mark.jsx';
-import Results from './components/Results';
+import Nav from './Nav';
+import Welcome from './Welcome';
+import Mark from './Mark.jsx';
+import Results from './Results';
+import { dataFormatter } from '../utils';
 
 interface Fields {
   id?: string;
@@ -149,16 +150,11 @@ function App() {
   useEffect(() => {
     fetch('/.netlify/functions/airtableAllAnswers')
       .then((result) => result.json())
-      .then((json) => {
-        console.log('json result', json);
-        const strippedData = json.map((teamData: RawTeamData) => {
-          teamData.fields.id = teamData.id;
-          return teamData.fields;
-        });
-        console.log('strippedData', strippedData);
-        setAnswersArray(strippedData);
+      .then((rawData) => {
+        const formattedData = dataFormatter(rawData);
+        setAnswersArray(formattedData);
       })
-      .catch((err) => console.log('ERROR IN FETCH', err));
+      .catch((err) => console.error('ERROR IN FETCH', err));
   }, []);
 
   return (
@@ -171,9 +167,6 @@ function App() {
           pageComponent={<Mark answersArray={answersArray} />}
         />
         <RouterPage path='/results' pageComponent={<Results />} />
-        {/* <Welcome path='/' />
-        <Mark path='/mark' answersArray={answersArray} />
-        <Results path='/results' /> */}
       </Router>
     </>
   );

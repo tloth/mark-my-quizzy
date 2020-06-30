@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
 import TeamAnswers from './TeamAnswers';
+import find from 'ramda/src/find';
 
 function Mark({ answersArray }) {
   const [selectedTeam, setSelectedTeam] = useState(null);
 
-  let teamData = [];
-  if (answersArray) {
-    teamData = answersArray.filter((answerObject) => {
-      return answerObject.teamname === selectedTeam;
-    })[0];
-  }
+  const teamData = answersArray
+    ? find((team) => team.teamname === selectedTeam)(answersArray)
+    : {};
 
   if (answersArray) {
     return (
@@ -55,7 +52,7 @@ function Mark({ answersArray }) {
         ) : null}
 
         {selectedTeam ? (
-          <TeamAnswers teamData={teamData} selectedTeam={selectedTeam} />
+          <TeamAnswers teamData={teamData} />
         ) : (
           <p>Select a team from the dropdown list "Teams" above!</p>
         )}
