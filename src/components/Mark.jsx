@@ -41,7 +41,7 @@ function Mark({ answersArray }) {
             <TeamsList>
               {answersArray.map((answerObject) => {
                 return (
-                  <li>
+                  <li key={answerObject.id}>
                     <a
                       href='#'
                       onClick={() => setSelectedTeam(answerObject.teamname)}>
