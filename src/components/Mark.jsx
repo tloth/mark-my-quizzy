@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import TeamAnswers from './TeamAnswers';
+import { colours } from '../assets/theme';
 
 function Mark({ answersArray }) {
   const [selectedTeam, setSelectedTeam] = useState(null);
@@ -86,9 +87,9 @@ const Dropdown = styled.div`
   margin: 03rem auto;
   text-decoration: none;
   background: #fff;
-  color: #fd865d;
+  color: ${colours.main};
   &:hover {
-    background: #fd865d;
+    background: ${colours.main};
     color: #fff;
     ul {
       display: block;
@@ -101,7 +102,7 @@ const TeamsList = styled.ul`
   position: absolute;
   width: 100%;
   list-style: none;
-  background: #fd865d;
+  background: ${colours.main};
   left: 0;
   padding-inline-start: 0;
   margin-block-start: 0.5em; // is this an absolute mess??

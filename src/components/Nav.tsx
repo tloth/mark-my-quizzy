@@ -1,6 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from '@reach/router'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from '@reach/router';
+
+import { colours } from '../assets/theme';
 
 function Nav() {
   return (
@@ -9,7 +11,7 @@ function Nav() {
       <A to='/mark'>Mark</A>
       <A to='/results'>Results</A>
     </Navigation>
-  )
+  );
 }
 
 const Navigation = styled.nav`
@@ -18,7 +20,7 @@ const Navigation = styled.nav`
   color: #fff;
   text-transform: uppercase;
   font-size: 3rem;
-`
+`;
 
 const A = styled(Link)`
   width: 50%;
@@ -28,8 +30,8 @@ const A = styled(Link)`
   color: #fff;
   &:hover {
     background: #fff;
-    color: #fd865d;
+    color: ${colours.main};
   }
-`
+`;
 
-export default Nav
+export default Nav;

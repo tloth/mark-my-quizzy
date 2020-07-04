@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
+import { colours } from '../assets/theme';
+
 export default function Results() {
   const [results, setResults] = useState(null);
 
   useEffect(() => {
     fetch('/.netlify/functions/airtableAllResults')
-      .then(response => response.json())
-      .then(data => setResults(data));
+      .then((response) => response.json())
+      .then((data) => setResults(data));
   }, []);
 
   if (!results) return <p>waiting for results</p>;
 
   return (
     <Container>
-      {results.map(team => {
+      {results.map((team) => {
         return (
           <TeamScore>
             <p>{team.fields.teamname}</p>
@@ -37,7 +39,6 @@ const TeamScore = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 0.5px dotted #fd865d;
-  padding: 0 0.5rem;
+  border: 0.5px dotted ${colours.main}
   margin-bottom: 0.5rem;
 `;

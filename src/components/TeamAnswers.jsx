@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { navigate } from '@reach/router';
 import styled from 'styled-components';
+
 import CategoryAnswers from './CategoryAnswers';
 
 function TeamAnswers({ teamData }) {
