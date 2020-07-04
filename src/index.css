@@ -5,7 +5,7 @@ body {
   font-family: 'Spartan', sans-serif;
   text-transform: uppercase;
   color: #24352e;
-  background-image: url('background-flowers.png');
+  background-image: url('./assets/bg-summer.png');
   background-size: cover;
   background-attachment: fixed;
 }

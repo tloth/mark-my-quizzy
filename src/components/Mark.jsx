@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import TeamAnswers from './TeamAnswers';
+import { colours } from '../assets/theme';
 
 function Mark({ answersArray }) {
   const [selectedTeam, setSelectedTeam] = useState(null);
@@ -42,11 +43,11 @@ function Mark({ answersArray }) {
               {answersArray.map((answerObject) => {
                 return (
                   <li>
-                    <a
+                    <Button
                       href='#'
                       onClick={() => setSelectedTeam(answerObject.teamname)}>
                       {answerObject.teamname}
-                    </a>
+                    </Button>
                   </li>
                 );
               })}
@@ -86,9 +87,9 @@ const Dropdown = styled.div`
   margin: 03rem auto;
   text-decoration: none;
   background: #fff;
-  color: #fd865d;
+  color: ${colours.main};
   &:hover {
-    background: #fd865d;
+    background: ${colours.main};
     color: #fff;
     ul {
       display: block;
@@ -101,11 +102,11 @@ const TeamsList = styled.ul`
   position: absolute;
   width: 100%;
   list-style: none;
-  background: #fd865d;
+  background: ${colours.main};
   left: 0;
   padding-inline-start: 0;
   margin-block-start: 0.5em; // is this an absolute mess??
-  > li a {
+  > li button {
     text-decoration: none;
     color: #24352e;
     font-size: 2rem;
@@ -115,4 +116,21 @@ const TeamsList = styled.ul`
     }
   }
 `;
+
+const Button = styled.button`
+  /* unset default button styles */
+  margin: initial;
+  padding: initial;
+  border: 0;
+  color: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  text-transform: inherit;
+  background-color: transparent;
+`;
+
 export default Mark;

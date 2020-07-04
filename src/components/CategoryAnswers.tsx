@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import { colours } from '../assets/theme';
+
 function CategoryAnswers({
   totalScore,
   setTotalScore,
@@ -70,7 +72,7 @@ const AnswerContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 0.5px dotted #fd865d;
+  border: 0.5px dotted ${colours.main};
   padding: 0 0.5rem;
   margin-bottom: 0.5rem;
 `;
