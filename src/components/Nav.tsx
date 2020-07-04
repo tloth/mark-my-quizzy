@@ -16,7 +16,7 @@ function Nav() {
 
 const Navigation = styled.nav`
   display: flex;
-  background: #fd865d;
+  background: ${colours.main};
   color: #fff;
   text-transform: uppercase;
   font-size: 3rem;
