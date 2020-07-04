@@ -43,11 +43,11 @@ function Mark({ answersArray }) {
               {answersArray.map((answerObject) => {
                 return (
                   <li>
-                    <a
+                    <Button
                       href='#'
                       onClick={() => setSelectedTeam(answerObject.teamname)}>
                       {answerObject.teamname}
-                    </a>
+                    </Button>
                   </li>
                 );
               })}
@@ -106,7 +106,7 @@ const TeamsList = styled.ul`
   left: 0;
   padding-inline-start: 0;
   margin-block-start: 0.5em; // is this an absolute mess??
-  > li a {
+  > li button {
     text-decoration: none;
     color: #24352e;
     font-size: 2rem;
@@ -116,4 +116,21 @@ const TeamsList = styled.ul`
     }
   }
 `;
+
+const Button = styled.button`
+  /* unset default button styles */
+  margin: initial;
+  padding: initial;
+  border: 0;
+  color: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  text-transform: inherit;
+  background-color: transparent;
+`;
+
 export default Mark;
