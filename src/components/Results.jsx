@@ -40,5 +40,6 @@ const TeamScore = styled.div`
   justify-content: space-between;
   align-items: center;
   border: 0.5px dotted ${colours.main};
+  padding: 0 0.5rem;
   margin-bottom: 0.5rem;
 `;
