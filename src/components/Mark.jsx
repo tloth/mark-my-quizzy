@@ -105,7 +105,6 @@ const TeamsList = styled.ul`
     text-decoration: none;
     color: #24352e;
     font-size: 2rem;
-    padding: 1rem;
     &:hover {
       color: #fff;
     }

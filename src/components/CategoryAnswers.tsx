@@ -33,7 +33,7 @@ function CategoryAnswers({
       <Category>Category: {category}</Category>
       {answers.map((answer, index) => {
         return (
-          <AnswerContainer key={index}>
+          <AnswerContainer key={answer + index}>
             <p>
               {index + 1}: {answer}
             </p>
