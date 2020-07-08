@@ -16,7 +16,7 @@ export default function Results() {
     <Container>
       {results.map(team => {
         return (
-          <TeamScore>
+          <TeamScore key={team.id}>
             <p>{team.fields.teamname}</p>
             <p>{team.fields.score}</p>
           </TeamScore>

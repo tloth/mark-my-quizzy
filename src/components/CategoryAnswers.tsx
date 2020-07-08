@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+type CategoryAnswersProps = {
+  totalScore: number;
+  setTotalScore: any;
+  answers: string[];
+  category: string;
+};
+
 function CategoryAnswers({
   totalScore,
   setTotalScore,
   answers,
   category,
-}: any) {
+}: CategoryAnswersProps) {
   const [categoryScore, setCategoryScore] = useState<number>(0);
 
   function toggleButton(e: any) {
@@ -21,38 +28,22 @@ function CategoryAnswers({
     }
   }
 
-  let sortedAnswersArray: Array<string> = [];
-  sortedAnswersArray.push(
-    answers[category + '_1'],
-    answers[category + '_2'],
-    answers[category + '_3'],
-    answers[category + '_4'],
-    answers[category + '_5'],
-    answers[category + '_6'],
-    answers[category + '_7'],
-    answers[category + '_8'],
-    answers[category + '_9'],
-    answers[category + '_10']
+  return (
+    <Container>
+      <Category>Category: {category}</Category>
+      {answers.map((answer, index) => {
+        return (
+          <AnswerContainer key={answer + index}>
+            <p>
+              {index + 1}: {answer}
+            </p>
+            <MarkerButton onClick={toggleButton}>nope</MarkerButton>
+          </AnswerContainer>
+        );
+      })}
+      <p>Category score: {categoryScore}/10</p>
+    </Container>
   );
-
-  if (sortedAnswersArray.length === 10) {
-    return (
-      <Container>
-        <Category>Category: {category}</Category>
-        {sortedAnswersArray.map((answer, index) => {
-          return (
-            <AnswerContainer>
-              <p>
-                {index + 1}: {answer}
-              </p>
-              <MarkerButton onClick={toggleButton}>nope</MarkerButton>
-            </AnswerContainer>
-          );
-        })}
-        <p>Category score: {categoryScore}/10</p>
-      </Container>
-    );
-  }
 }
 
 const Container = styled.section`

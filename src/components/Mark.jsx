@@ -1,17 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
 import TeamAnswers from './TeamAnswers';
+import find from 'ramda/src/find';
 
 function Mark({ answersArray }) {
   const [selectedTeam, setSelectedTeam] = useState(null);
 
-  let teamData = [];
-  if (answersArray) {
-    teamData = answersArray.filter((answerObject) => {
-      return answerObject.teamname === selectedTeam;
-    })[0];
-  }
+  const teamData = answersArray
+    ? find((team) => team.teamname === selectedTeam)(answersArray)
+    : {};
 
   if (answersArray) {
     return (
@@ -41,12 +38,11 @@ function Mark({ answersArray }) {
             <TeamsList>
               {answersArray.map((answerObject) => {
                 return (
-                  <li>
-                    <a
-                      href='#'
+                  <li key={answerObject.id}>
+                    <Button
                       onClick={() => setSelectedTeam(answerObject.teamname)}>
                       {answerObject.teamname}
-                    </a>
+                    </Button>
                   </li>
                 );
               })}
@@ -55,7 +51,7 @@ function Mark({ answersArray }) {
         ) : null}
 
         {selectedTeam ? (
-          <TeamAnswers teamData={teamData} selectedTeam={selectedTeam} />
+          <TeamAnswers teamData={teamData} />
         ) : (
           <p>Select a team from the dropdown list "Teams" above!</p>
         )}
@@ -105,14 +101,30 @@ const TeamsList = styled.ul`
   left: 0;
   padding-inline-start: 0;
   margin-block-start: 0.5em; // is this an absolute mess??
-  > li a {
+  > li button {
     text-decoration: none;
     color: #24352e;
     font-size: 2rem;
-    padding: 1rem;
     &:hover {
       color: #fff;
     }
   }
 `;
+
+const Button = styled.button`
+  /* unset default button styles */
+  margin: initial;
+  padding: initial;
+  border: 0;
+  color: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  text-transform: inherit;
+  background-color: transparent;
+`;
+
 export default Mark;
